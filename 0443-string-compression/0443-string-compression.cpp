@@ -12,7 +12,7 @@ public:
                     string s = to_string(count); 
                     for (char val : s){ 
                         ans.push_back(val);
-                        };
+                        }
                 }
                 count = 1; 
             }
