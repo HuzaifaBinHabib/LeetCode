@@ -1,23 +1,21 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-         if (x < 0) return false;
-        
-        int value = x;
-        int reversedx = 0;
+        string s1 = to_string(x);
+        int lp = 0;
+        int rp = s1.length() - 1;
 
-        while (x > 0) {
-            int digit = x % 10;
-
-            // Check for potential overflow
-            if (reversedx > (2147483647 - digit) / 10) {
-                return false; // Will overflow if we proceed
+        while (lp < rp) {
+            if (s1[lp] == s1[rp]) {
+                lp++;
+                rp--;
+            } else {
+                if (lp == rp) {
+                    return true;
+                }
+                return false;
             }
-
-            reversedx = reversedx * 10 + digit;
-            x /= 10;
         }
-
-        return (reversedx == value);
+        return -1;
     }
 };
