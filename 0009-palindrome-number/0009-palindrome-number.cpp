@@ -4,18 +4,13 @@ public:
         string s1 = to_string(x);
         int lp = 0;
         int rp = s1.length() - 1;
-
         while (lp < rp) {
-            if (s1[lp] == s1[rp]) {
-                lp++;
-                rp--;
-            } else {
-                if (lp == rp) {
-                    return true;
-                }
+            if (s1[lp] != s1[rp]) {
                 return false;
             }
+            lp++;
+            rp--;
         }
-        return -1;
+        return true;
     }
 };
