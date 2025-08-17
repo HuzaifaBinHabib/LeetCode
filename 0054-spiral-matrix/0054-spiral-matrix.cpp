@@ -12,7 +12,7 @@ public:
         while (srows <= erows && scols <= ecols) {
 
             for (int i = scols; i <= ecols; i++) {
-                ans.push_back(m[scols][i]);
+                ans.push_back(m[srows][i]);
             }
             for (int i = srows + 1; i <= erows - 1; i++) {
                 ans.push_back(m[i][ecols]);
