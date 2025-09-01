@@ -13,20 +13,16 @@ public:
     ListNode* reverseList(ListNode* head) {
         ListNode* prev = nullptr;
         ListNode* curr = head;
-       while(curr!=nullptr){
-           ListNode* temp = curr->next;
-           curr->next=prev;
-           prev=curr;
-           curr=temp;
-       }
-        return prev;
+        ListNode* next = nullptr;
+        while (curr != nullptr) {
+            next = curr->next;
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+
+        return head;
     }
-     void printlist(ListNode* head){
-      while(head!=nullptr){
-          cout<<head->val<<" -> ";
-          head=head->next;
-      }
-      cout<<"NULL";
-  }
-    
 };
