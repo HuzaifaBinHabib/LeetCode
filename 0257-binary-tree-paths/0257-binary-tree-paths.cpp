@@ -17,6 +17,7 @@ public:
             ans.push_back(path);
             return;
         }
+
         if (root->left != nullptr) {
             helper(root->left, path + "->" + to_string(root->left->val), ans);
         }
@@ -24,6 +25,7 @@ public:
             helper(root->right, path + "->" + to_string(root->right->val), ans);
         }
     }
+
     vector<string> binaryTreePaths(TreeNode* root) {
         string path = to_string(root->val);
         vector<string> ans;
