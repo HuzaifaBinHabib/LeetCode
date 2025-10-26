@@ -5,49 +5,51 @@ public:
         int c = grid[0].size();
         int ans=0;
         vector<vector<bool>> vis(r,vector<bool>(c,false));
-        queue<pair<pair<int,int>, int>> q;
+        queue<pair<pair<int,int>,int>> q;
 
-        for(int i=0 ; i<r; i++){
-         for(int j=0 ; j<c; j++){
-             if(grid[i][j]==2){
-                q.push({{i,j},0});
-                vis[i][j]=true;
-             }
+        for(int i=0;i<r;i++){
+         for(int j=0;j<c;j++){
+            if(grid[i][j]== 2){
+              q.push({{i,j},0});
+              vis[i][j]= true;
+            }
          }
         }
 
-        while(q.size() >0){
-             int i= q.front().first.first;
-             int j= q.front().first.second;
-             int time= q.front().second;
-             q.pop();
-             ans= max(ans,time);
+        while(q.size()>0){
+            int i = q.front().first.first;
+            int j = q.front().first.second;
+            int t = q.front().second;
+            q.pop();
+             ans = t;
 
-            if(i-1 >= 0 &&  vis[i-1][j]!=true && grid[i-1][j] == 1){ //top
-               vis[i-1][j]= true;
-               q.push({{i-1,j},time+1});
-            } 
-            if(j-1 >=0 && vis[i][j-1]!=true && grid[i][j-1] == 1){ //left
-                vis[i][j-1]= true;
-                q.push({{i,j-1},time+1});
+            if(i+1 < r && vis[i+1][j]!= true && grid[i+1][j]==1){
+                vis[i+1][j]=true;
+                q.push({{i+1,j},t+1});
             }
-            if(i+1 < r &&  vis[i+1][j]!=true && grid[i+1][j] == 1){ //bottom
-               vis[i+1][j]= true;
-               q.push({{i+1,j},time+1});
-            } 
-            if(j+1 < c && vis[i][j+1]!=true && grid[i][j+1] == 1){ //right
-                vis[i][j+1]= true;
-                q.push({{i,j+1},time+1});
+            if(i-1 >= 0  && vis[i-1][j]!= true && grid[i-1][j]==1){
+                vis[i-1][j]=true;
+                q.push({{i-1,j},t+1});
+            }
+            if(j+1 < c && vis[i][j+1]!= true && grid[i][j+1]==1){
+                vis[i][j+1]=true;
+                q.push({{i,j+1},t+1});
+            }
+            if(j-1 >= 0 && vis[i][j-1]!= true && grid[i][j-1]==1){
+                vis[i][j-1]=true;
+                q.push({{i,j-1},t+1});
+            }        
+        }
+
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                if(grid[i][j]==1 && vis[i][j]!= true){
+                    return -1;
+                }
             }
         }
 
-        for(int i=0 ;i<r ;i++){
-        for(int j=0 ;j<c ;j++){
-          if(grid[i][j]  == 1 && vis[i][j]!= true){
-            return -1;
-          }
-        }
-        }
         return ans;
+        
     }
 };
