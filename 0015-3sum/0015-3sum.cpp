@@ -28,7 +28,6 @@ public:
                     rp--;
                     
                     while (lp < rp && nums[lp] == nums[lp - 1]) lp++;
-                    while (lp < rp && nums[rp] == nums[rp + 1]) rp--;
                 }
             }
         }
